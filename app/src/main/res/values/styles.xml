@@ -1,0 +1,122 @@
+<resources
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/primaryLightColor</item>
+        <item name="android:textColorPrimary">@color/primaryTextColor</item>
+
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="android:navigationBarColor" tools:targetApi="21">@color/primaryDarkColor</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!-- Font Styles! -->
+
+    <style name="PriceFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CategoryFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@color/porlalivre_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WarningFont" parent="@android:style/TextAppearance.Large">
+        <item name="android:textColor">@color/porlalivre_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TitleFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/porlalivre_dark</item>
+    </style>
+
+    <style name="ControlFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/porlalivre_dark</item>
+    </style>
+
+    <style name="TitleGrayFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#333333</item>
+    </style>
+
+    <style name="TitleGrayBigFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TitleBigFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/porlalivre_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="CategoryTitleFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/porlalivre_dark</item>
+    </style>
+
+    <style name="AboutTitleFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/porlalivre_dark</item>
+    </style>
+
+    <style name="AboutCopyrightFont" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="DescriptionFont" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">@color/porlalivre_light</item>
+    </style>
+
+    <style name="CategoryDescriptionFont" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="TagFont" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/porlalivre_dark</item>
+    </style>
+
+    <style name="InfoFont" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#444444</item>
+    </style>
+
+    <style name="ContactFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#444444</item>
+    </style>
+
+    <style name="LinkFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#5577ff</item>
+    </style>
+
+    <style name="DisclaimerFont" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="ButtonBar">
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
+
+    <style name="ButtonBarButton" />
+
+</resources>

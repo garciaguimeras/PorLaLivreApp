@@ -1,0 +1,44 @@
+<menu 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
+
+	<!--
+	<item
+		android:id="@+id/action_update"
+		android:title="@string/action_update"
+		android:icon="@drawable/update_icon"
+		yourapp:showAsAction="ifRoom">
+
+		<menu>
+			<item
+				android:id="@+id/action_update_sdcard"
+				android:icon="@drawable/update_icon"
+				android:title="@string/action_update_sdcard"/>
+			<item
+				android:id="@+id/action_update_internet"
+				android:icon="@drawable/update_icon"
+				android:title="@string/action_update_internet"/>
+			<item
+				android:id="@+id/action_cleanup"
+				android:icon="@drawable/delete_notification_icon"
+				android:title="@string/action_cleanup"/>
+		</menu>
+
+	</item>
+
+	<item
+		android:id="@+id/action_filter"
+		android:title="@string/action_filter"
+		android:icon="@drawable/filter_icon"
+		yourapp:showAsAction="ifRoom" />
+
+	<item
+		android:id="@+id/action_workshops"
+		android:title="@string/action_workshops"/>
+
+	<item
+		android:id="@+id/action_about"
+		android:title="@string/action_about"/>
+	-->
+    
+</menu>

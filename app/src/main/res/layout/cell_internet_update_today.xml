@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+	android:background="@color/primaryLightColor">
+
+	<TextView
+		style="@style/TitleGrayBigFont"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"
+		android:layout_marginTop="10dp"
+		android:text="@string/text_internet_update_today"/>
+
+	<TextView
+		style="@style/TitleBigFont"
+		android:id="@+id/internetUpdate1TextView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="10dp"
+		android:layout_gravity="center_vertical"
+		android:text="@string/text_internet_update_1" />
+
+	<TextView
+		style="@style/TitleGrayFont"
+		android:id="@+id/internetUpdate2TextView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="10dp"
+		android:text="@string/text_internet_update_2" />
+
+	<TextView
+		style="@style/TitleGrayFont"
+		android:id="@+id/internetUpdate5TextView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical"
+		android:text="${size}"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="10dp"/>
+
+	<TextView
+        style="@style/TitleGrayFont"
+        android:id="@+id/internetUpdate3TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="@string/text_internet_update_5"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+		android:layout_marginBottom="10dp"/>
+    
+</LinearLayout>

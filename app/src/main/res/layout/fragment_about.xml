@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:paddingBottom="@dimen/form_vertical_margin"
+				android:paddingLeft="@dimen/form_horizontal_margin"
+				android:paddingRight="@dimen/form_horizontal_margin"
+				android:paddingTop="@dimen/form_vertical_margin">
+
+				<ImageView
+					android:id="@+id/imageView1"
+					android:layout_width="120dp"
+					android:layout_height="120dp"
+					android:layout_alignParentTop="true"
+					android:layout_centerHorizontal="true"
+					android:layout_marginTop="0dp"
+					android:src="@drawable/app_icon_round" />
+
+				<TextView
+					android:id="@+id/textView1"
+					style="@style/AboutTitleFont"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/imageView1"
+					android:layout_centerHorizontal="true"
+					android:text="@string/app_name"
+					android:textStyle="bold" />
+
+				<TextView
+					android:id="@+id/textView2"
+					style="@style/AboutTitleFont"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/textView1"
+					android:layout_centerHorizontal="true"
+					android:text="@string/about_app_version" />
+
+				<TextView
+					android:id="@+id/aboutAppDescriptionTextView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/textView2"
+					android:layout_centerHorizontal="true"
+					android:textAlignment="center"
+					android:text="@string/about_app_description" />
+
+
+				<TextView
+					android:id="@+id/aboutAppDisclaimerTextView"
+					style="@style/DisclaimerFont"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignLeft="@+id/aboutAppDescriptionTextView"
+					android:layout_below="@+id/aboutAppDescriptionTextView"
+					android:text="@string/about_app_disclaimer" />
+
+				<ImageView
+					android:id="@+id/aboutAppDeveloperImageView"
+					android:layout_width="44dp"
+					android:layout_height="29dp"
+					android:layout_centerHorizontal="true"
+					android:layout_marginTop="20dp"
+					android:layout_below="@+id/aboutAppDisclaimerTextView"
+					android:src="@drawable/blackcat_dev_icon" />
+
+				<TextView
+					android:id="@+id/aboutAppDeveloperTextView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:textColor="#000000"
+					android:textStyle="bold"
+					android:layout_below="@+id/aboutAppDeveloperImageView"
+					android:text="@string/about_app_blackcatdev"/>
+
+				<TextView
+					android:id="@+id/aboutAppDeveloperHelpTextView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_below="@+id/aboutAppDeveloperTextView"
+					android:text="@string/about_app_help"/>
+
+				<Button
+					android:id="@+id/aboutSendDevMail"
+					android:layout_width="400dp"
+					android:layout_height="36dp"
+					android:layout_centerHorizontal="true"
+					android:layout_below="@+id/aboutAppDeveloperHelpTextView"
+					android:background="@color/primaryDarkColor"
+					android:text="@string/send_dev_mail"/>
+
+			</RelativeLayout>
+
+    </ScrollView>        
+
+</LinearLayout>     				

@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:layout_marginLeft="10dp"
+	android:layout_marginRight="10dp"
+	android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@android:style/TextAppearance.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/workshop_intro" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/form_vertical_margin"
+        android:paddingLeft="@dimen/form_horizontal_margin"
+        android:paddingRight="@dimen/form_horizontal_margin"
+        android:paddingTop="@dimen/form_vertical_margin" >    
+
+	    <ListView
+	        android:id="@+id/workshopsListView"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:dividerHeight="2dp"
+	        android:divider="@color/porlalivre_light" />
+	    
+    </LinearLayout>
+    
+</LinearLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PorLaLivreDroid</string>
+
+    <string name="action_settings">Preferencias</string>
+    <string name="action_update">Actualización</string>
+    <string name="action_update_sdcard">Actualizar desde la tarjeta SD</string>
+    <string name="action_update_internet">Actualizar desde internet</string>
+    <string name="action_cleanup">Eliminar anuncios viejos</string>
+    <string name="action_workshops">Negocios promocionados</string>
+    <string name="action_filter">Filtrar</string>
+    <string name="action_about">Créditos</string>
+    <string name="action_all_announces">Anuncios por categorías</string>
+    <string name="action_favorite_announces">Favoritos</string>
+    <string name="action_logs">Registro</string>
+
+    <string name="about_app_name">PorLaLivreDroid</string>
+    <string name="about_app_version">versión 1.0</string>
+    <string name="about_app_description">
+        <![CDATA[
+            <p>
+            Aplicación para consultar los anuncios del sitio web
+            <b>https://www.porlalivre.com</b>
+            </p>
+        ]]>
+    </string>
+
+    <string name="about_app_developed_by">Desarrollado por</string>
+    <string name="about_app_blackcatdev">blackcat.dev#</string>
+    <string name="about_app_help">Puedes enviarnos tus comentarios o reportarnos errores</string>
+    <string name="about_app_disclaimer">
+        <![CDATA[
+            <p>
+            Los datos mostrados en esta aplicación son tomados tal cual
+            del sitio web <b>www.porlalivre.com</b>.
+            Los desarrolladores no se responsabilizan por cualquier tipo de información inexacta
+            o deliberadamente incorrecta tomada de este sitio, como pueden ser
+            números de teléfono o correos electrónicos incorrectos,
+            faltas de ortografía y errores de redacción, precios incorrectos,
+            nombres falsos, anuncios falsos, engaños, etc.
+            Los desarrolladores animan a los usuarios de este sitio y otros similares
+            a utilizar la información de manera responsable.
+            </p>
+            <p>
+            La copia y distribución de la esta aplicación es gratuita.
+            </p>
+            <p>
+            Los desarrolladores no se responsabilizan ante cualquier
+            daño o malfuncionamiento derivado de la copia, instalación
+            y/o uso de este producto en su equipo.
+            </p>
+            <p>
+            Ante errores en el funcionamiento de la aplicación, los desarrolladores pueden liberar nuevas 
+            versiones de este producto con el fin de solucionar las deficiencias detectadas.
+            </p>
+        ]]>
+    </string>
+
+    <string name="file_explorer">Explorar archivos</string>
+
+    <string name="internet_updates">Actualizaciones</string>
+
+    <string name="workshop_intro">Para agregar su negocio a la lista de promociones, contacte con black_cat.dev#</string>
+
+    <string name="text_permission_alert_title">Alerta</string>
+    <string name="text_permission_alert_button">Conceder permisos</string>
+    <string name="text_permission_alert">Si no concede los permisos requeridos, la aplicación no funcionará correctamente y podría detenerse de forma repentina</string>
+    <string name="text_starting">Iniciando...</string>
+    <string name="text_no_announces_found">No se encontraron anuncios</string>
+    <string name="text_no_favorites_found">No hay anuncios marcados como favoritos</string>
+    <string name="text_min_value_greater_than_max">Valor mínimo es mayor o igual que el valor máximo</string>
+    <string name="text_importing_data">Importando anuncios...</string>
+    <string name="text_importing_data_finished">Anuncios importados con éxito</string>
+    <string name="text_cleaning_data">Eliminando anuncios antiguos...</string>
+    <string name="text_cleaning_data_finished">Anuncios eliminados con éxito</string>
+    <string name="text_searching_updates">Buscando actualizaciones...</string>
+    <string name="text_downloading_update">Descargando actualización...</string>
+    <string name="text_downloading_update_error">Error descargando actualización</string>
+    <string name="text_cleanup">Se eliminarán los anuncios con más de {DAYS} días de antigüedad, a no ser que estén marcados como favoritos.</string>
+    <string name="text_updates_found">Actualizaciones encontradas</string>
+    <string name="text_no_updates_found">No se han encontrado actualizaciones</string>
+    <string name="text_no_internet_connection">No hay conexión con internet</string>
+    <string name="text_no_announce_found">Lo sentimos, el anuncio no aparece. Probablemente era un anuncio antiguo que fue eliminado</string>
+    <string name="text_internet_update_1">${name}</string>
+    <string name="text_internet_update_2">${frequency}</string>
+    <string name="text_internet_update_3">${totalUpdates} anuncios, ${size}.</string>
+    <string name="text_internet_update_4">Actualización del día ${date}</string>
+    <string name="text_internet_update_5">${totalUpdates} anuncios.</string>
+    <string name="text_internet_update_today">ÚLTIMA ACTUALIZACIÓN</string>
+    <string name="text_total_announces">${totalAnnounces} anuncios procesados</string>
+    <string name="text_deleted_announces">${deletedAnnounces} anuncios eliminados</string>
+    <string name="text_added_announces">${addedAnnounces} anuncios nuevos agregados</string>
+    <string name="text_updated_announces">${updatedAnnounces} anuncios actualizados</string>
+    <string name="text_existing_announces">${existingAnnounces} anuncios ya existentes</string>
+    <string name="text_error_announces">${errorAnnounces} errores al agregar anuncios</string>
+    <string name="text_internet_update_help">Asegúrese de estar conectado a internet antes de acceder a esta opción.</string>
+    <string name="text_sdcard_update_help">Descargue las actualizaciones desde la página web www.porlalivre.com y cópielas en la tarjeta SD.</string>
+    <string name="text_cleanup_help">Se eliminarán todos los anuncios antiguos, excepto aquellos que estén marcados como favoritos.</string>
+
+    <string name="filter_title_text_hint">Búsqueda...</string>
+    <string name="filter_title_min_price">Desde $</string>
+    <string name="filter_title_max_price">hasta $</string>
+    <string name="filter_title_price_sorting">Más baratos primero</string>
+    <string name="filter_title_date_sorting">Más recientes primero</string>
+    <string name="filter_title_state_combo">En</string>
+    <string name="filter_button_apply">Aplicar filtros</string>
+    <string name="filter_button_clean">Limpiar filtros</string>
+    <string name="filter_all_states">Todas las provincias</string>
+
+    <string name="dialog_call">¿Llamar al número ${phone}?</string>
+    <string name="dialog_mail">Enviar correo</string>
+    <string name="mail_subject">Acerca de su anuncio en PorLaLivre</string>
+
+    <string name="dialog_first_time_title">Actualizar datos</string>
+    <string name="dialog_first_time_text">Al parecer estás usando la aplicación por primera vez y no hay ningún anuncio.
+    Puedes actualizar tus datos importando los anuncios desde internet, o desde tu tarjeta SD.</string>
+
+    <string name="send_dev_mail">Enviar correo a los desarrolladores</string>
+    <string name="dev_mail_address">dev.blackcat@gmail.com</string>
+    <string name="dev_mail_subject">Reporte de errores / Comentarios</string>
+    <string name="dev_mail_text">Aplicación: ${appName}\nVersión: ${appVersion}\n\n\n</string>
+
+    <string name="button_accept">Aceptar</string>
+    <string name="button_update">Actualizar</string>
+    <string name="button_cleanup">Eliminar</string>
+    <string name="button_modify_filter">Modificar filtros</string>
+    <string name="button_update_data">Actualizar datos</string>
+    <string name="button_search">Buscar</string>
+
+    <string name="search_text_hint">¿Qué estás buscando?</string>
+
+    <array name="cleanup_options">
+        <item>1 semana</item>
+        <item>2 semanas</item>
+        <item>1 mes</item>
+        <item>2 meses</item>
+    </array>
+
+</resources>

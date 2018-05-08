@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+    <color name="primaryColor">#f9a825</color>
+    <color name="primaryLightColor">#ffd95a</color>
+    <color name="primaryDarkColor">#c17900</color>
+    <color name="primaryTextColor">#000000</color>
+    -->
+
+    <color name="primaryColor">#ffa726</color>
+    <color name="primaryLightColor">#ffd95b</color>
+    <color name="primaryDarkColor">#c77800</color>
+    <color name="primaryTextColor">#000000</color>
+
+    <color name="backgroundColor">#dedede</color>
+    <color name="black_overlay">#66000000</color>
+
+    <color name="porlalivre_dark">@color/primaryDarkColor</color>
+    <color name="porlalivre_light">@color/primaryLightColor</color>
+
+</resources>

@@ -1,0 +1,125 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/filterLayout"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/primaryColor"
+	android:orientation="vertical"
+	android:paddingHorizontal="20dp"
+	android:paddingBottom="20dp"
+	android:visibility="gone">
+
+	<EditText
+		android:id="@+id/filterText"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="@string/filter_title_text_hint"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/filter_title_state_combo"/>
+
+		<Spinner
+			android:id="@+id/stateSpinner"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/filter_title_min_price"/>
+
+		<EditText
+			android:id="@+id/fromPriceEdit"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:inputType="numberDecimal"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/filter_title_max_price"/>
+
+		<EditText
+			android:id="@+id/toPriceEdit"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:inputType="numberDecimal"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/filter_title_price_sorting"/>
+
+		<Switch
+			android:id="@+id/cheaperFirstSwitch"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/filter_title_date_sorting"/>
+
+		<Switch
+			android:id="@+id/newerFirstSwitch"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:gravity="right">
+
+		<Button
+			android:id="@+id/cleanButton"
+			android:layout_width="160dp"
+			android:layout_height="36dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginRight="10dp"
+			android:background="@color/primaryDarkColor"
+			android:text="@string/filter_button_clean"/>
+
+		<Button
+			android:id="@+id/applyButton"
+			android:layout_width="160dp"
+			android:layout_height="36dp"
+			android:layout_marginTop="10dp"
+			android:background="@color/primaryDarkColor"
+			android:text="@string/filter_button_apply"/>
+
+	</LinearLayout>
+
+</LinearLayout>
