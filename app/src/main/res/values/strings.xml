@@ -14,6 +14,7 @@
     <string name="action_all_announces">Anuncios por categorías</string>
     <string name="action_favorite_announces">Favoritos</string>
     <string name="action_logs">Registro</string>
+    <string name="action_search">Búsqueda</string>
 
     <string name="about_app_name">PorLaLivreDroid</string>
     <string name="about_app_version">versión 1.0</string>

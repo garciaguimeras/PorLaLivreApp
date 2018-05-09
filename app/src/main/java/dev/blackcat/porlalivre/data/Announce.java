@@ -18,6 +18,7 @@ import com.j256.ormlite.stmt.Where;
 
 import dev.blackcat.porlalivre.PorLaLivreApp;
 import dev.blackcat.porlalivre.data.db.DatabaseHelper;
+import dev.blackcat.porlalivre.fragments.SearchFragment;
 
 public class Announce extends JSONData
 {
@@ -167,6 +168,38 @@ public class Announce extends JSONData
 		}
 		catch (Exception e)
 		{}		
+		return new ArrayList<Announce>();
+	}
+
+	public static List<Announce> filterAll(Context context)
+	{
+		try
+		{
+			AnnounceFilter announceFilter = AnnounceFilter.get(context, SearchFragment.SEARCH_FILTER_ID);
+
+			Dao<Announce, String> announceDao = DatabaseHelper.getAnnounceDao(context);
+			QueryBuilder<Announce, String> queryBuilder = announceDao.queryBuilder();
+			Where<Announce, String> where = queryBuilder.where();
+
+			where.between("price", announceFilter.minPrice, announceFilter.maxPrice);
+			if (announceFilter.site != 0)
+				where.and().eq("siteId", announceFilter.site);
+			if (announceFilter.text.length() > 0)
+			{
+				where.and(where, where.or(where.like("title", "%" + announceFilter.text + "%"),
+						where.like("description", "%" + announceFilter.text + "%")));
+			}
+			queryBuilder.setWhere(where);
+
+			String orderingTypeDate = announceFilter.newerFirst ? "DESC" : "ASC";
+			String orderingTypePrice = announceFilter.cheaperFirst ? "ASC" : "DESC";
+
+			queryBuilder.orderByRaw("updateDate " + orderingTypeDate + ", price " + orderingTypePrice);
+
+			return announceDao.query(queryBuilder.prepare());
+		}
+		catch (Exception e)
+		{}
 		return new ArrayList<Announce>();
 	}
 	

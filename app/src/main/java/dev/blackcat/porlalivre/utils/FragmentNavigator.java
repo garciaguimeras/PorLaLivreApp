@@ -21,7 +21,7 @@ public class FragmentNavigator
 		if (oldFragment != null)
 			return oldFragment;
 		
-		return new CategoryGridFragment();
+		return new SearchFragment();
 	}
 	
 	public static void add(Fragment fragment)
