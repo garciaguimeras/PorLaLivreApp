@@ -33,6 +33,11 @@ public class FavoritesListAdapter extends BaseAdapter
 		this.filteredAnnounces = filteredAnnounces;
 	}
 
+	public void setFilteredAnnounces(List<Announce> filteredAnnounces)
+	{
+		this.filteredAnnounces = filteredAnnounces;
+	}
+
 	@Override
 	public int getCount() 
 	{
@@ -80,17 +85,17 @@ public class FavoritesListAdapter extends BaseAdapter
 		});
 
 		TextView textView;
-		textView = (TextView)convertView.findViewById(R.id.favoriteRowTitleTextView);
+		textView = convertView.findViewById(R.id.favoriteRowTitleTextView);
 		textView.setText(announce.title);
 
-		textView = (TextView)convertView.findViewById(R.id.favoriteRowCategoryTextView);
+		textView = convertView.findViewById(R.id.favoriteRowCategoryTextView);
 		textView.setText(category.title);
 		
-		textView = (TextView)convertView.findViewById(R.id.favoriteRowPriceTextView);
+		textView = convertView.findViewById(R.id.favoriteRowPriceTextView);
 		String currency = NumberFormat.getCurrencyInstance().format(announce.price);
 		textView.setText(currency);
 		
-		textView = (TextView)convertView.findViewById(R.id.favoriteRowDescriptionTextView);
+		textView = convertView.findViewById(R.id.favoriteRowDescriptionTextView);
 		textView.setText(StringUtils.cropText(announce.description, DESCRIPTION_MAX_LENGHT));
 		
 		return convertView;
