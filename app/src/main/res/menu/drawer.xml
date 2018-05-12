@@ -24,6 +24,10 @@
 -->
 
     <item
+        android:id="@+id/action_search"
+        android:title="@string/action_search"/>
+
+    <item
         android:id="@+id/action_all_announces"
         android:title="@string/action_all_announces"/>
 

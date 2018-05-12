@@ -18,15 +18,17 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
-import dev.blackcat.porlalivre.PorLaLivreApp;
 import dev.blackcat.porlalivre.R;
 import dev.blackcat.porlalivre.data.AnnounceFilter;
+import dev.blackcat.porlalivre.data.live.LiveAsyncTask;
 import dev.blackcat.porlalivre.utils.DeviceUtils;
 import dev.blackcat.porlalivre.utils.FragmentNavigator;
 import dev.blackcat.porlalivre.data.Announce;
@@ -39,12 +41,16 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 	
 	public static final String ANNOUNCELISTFRAGMENT_CATEGORYID = "com.porlalivre.AnnounceListFragment.categoryId";
 
-	List<Announce> filteredAnnounces;
+	List<Announce> filteredAnnounces = new ArrayList<>();
 	private Long categoryId;
     ArrayList<Site> siteList;
 
-    RelativeLayout noAnnouncesLayout;
+    RelativeLayout emptyAnnouncesLayout;
+    TextView emptyAnnouncesTextView;
+    ImageView emptyAnnouncesImageView;
     ListView listView;
+    Button filterButton;
+    Button updateButton;
 
 	LinearLayout filterLayout;
 	EditText filterText;
@@ -53,7 +59,9 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 	EditText toPriceEdit;
 	Switch cheaperFirstSwitch;
 	Switch newerFirstSwitch;
-	
+
+	AnnounceListAdapter adapter;
+
 	public AnnounceListFragment()
 	{
 		this.categoryId = new Long(-1);
@@ -109,11 +117,16 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 		if (categoryId == -1 && savedInstanceState.containsKey(ANNOUNCELISTFRAGMENT_CATEGORYID))
 			categoryId = savedInstanceState.getLong(ANNOUNCELISTFRAGMENT_CATEGORYID);
 
-        noAnnouncesLayout = view.findViewById(R.id.noAnnouncesLayout);
-        listView = view.findViewById(R.id.announcesListView);
-        filterAnnounces();
+        emptyAnnouncesLayout = view.findViewById(R.id.emptyAnnouncesLayout);
+        emptyAnnouncesTextView = view.findViewById(R.id.emptyAnnouncesTextView);
+        emptyAnnouncesImageView = view.findViewById(R.id.emptyAnnouncesImageView);
 
-        Button filterButton = view.findViewById(R.id.noAnnouncesFilterButton);
+        listView = view.findViewById(R.id.announcesListView);
+        adapter = new AnnounceListAdapter(getActivity(), filteredAnnounces);
+		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(this);
+
+        filterButton = view.findViewById(R.id.noAnnouncesFilterButton);
         filterButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -121,7 +134,7 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 			}
 		});
 
-        Button updateButton = view.findViewById(R.id.noAnnouncesUpdateButton);
+        updateButton = view.findViewById(R.id.noAnnouncesUpdateButton);
         updateButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -130,7 +143,9 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 			}
 		});
 
-		filterLayout = view.findViewById(R.id.filterLayout);
+        filterAnnounces();
+
+        filterLayout = view.findViewById(R.id.filterLayout);
 		filterText = view.findViewById(R.id.filterText);
 		stateSpinner = view.findViewById(R.id.stateSpinner);
         fromPriceEdit = view.findViewById(R.id.fromPriceEdit);
@@ -208,22 +223,53 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 
 	private void filterAnnounces()
     {
-        filteredAnnounces = new ArrayList<Announce>();
-        if (categoryId != -1)
-            filteredAnnounces = Announce.filterByCategoryId(getContext(), categoryId);
+		LiveAsyncTask.start(new LiveAsyncTask.LiveService<Announce>() {
 
-        if (filteredAnnounces.size() == 0)
-        {
-        	listView.setVisibility(View.GONE);
-            noAnnouncesLayout.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-        	listView.setVisibility(View.VISIBLE);
-			noAnnouncesLayout.setVisibility(View.GONE);
-            listView.setAdapter(new AnnounceListAdapter(getActivity(), filteredAnnounces));
-            listView.setOnItemClickListener(this);
-        }
+			@Override
+			public void beforeStart()
+			{
+                if (filteredAnnounces.size() == 0)
+                {
+                    emptyAnnouncesImageView.setImageResource(R.drawable.wait_icon);
+                    emptyAnnouncesTextView.setText(R.string.text_searching);
+                    listView.setVisibility(View.GONE);
+                    emptyAnnouncesLayout.setVisibility(View.VISIBLE);
+                    filterButton.setVisibility(View.GONE);
+                    updateButton.setVisibility(View.GONE);
+                }
+			}
+
+			@Override
+			public void afterFinish(List<Announce> list)
+			{
+				filteredAnnounces = list;
+				if (filteredAnnounces.size() == 0)
+				{
+                    emptyAnnouncesImageView.setImageResource(R.drawable.warning_icon);
+                    emptyAnnouncesTextView.setText(R.string.text_no_announces_found);
+					listView.setVisibility(View.GONE);
+					emptyAnnouncesLayout.setVisibility(View.VISIBLE);
+					filterButton.setVisibility(View.VISIBLE);
+					updateButton.setVisibility(View.VISIBLE);
+				}
+				else
+				{
+					listView.setVisibility(View.VISIBLE);
+					emptyAnnouncesLayout.setVisibility(View.GONE);
+
+					adapter.setFilteredAnnounces(list);
+					adapter.notifyDataSetChanged();
+				}
+			}
+
+			@Override
+			public List<Announce> populateData()
+			{
+				if (categoryId == -1)
+					return new ArrayList<Announce>();
+				return Announce.filterByCategoryId(getContext(), categoryId);
+			}
+		});
     }
 
 	private void showFilter(AnnounceFilter announceFilter)

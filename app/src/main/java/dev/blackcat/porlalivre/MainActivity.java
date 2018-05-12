@@ -22,7 +22,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import dev.blackcat.porlalivre.data.SysInfo;
+import dev.blackcat.porlalivre.fragments.SearchFragment;
 import dev.blackcat.porlalivre.process.ProcessService;
+import dev.blackcat.porlalivre.utils.DeviceUtils;
 import dev.blackcat.porlalivre.utils.FragmentNavigator;
 import dev.blackcat.porlalivre.data.db.DatabaseHelper;
 import dev.blackcat.porlalivre.data.readers.AssetsCategoryReader;
@@ -133,7 +135,9 @@ public class MainActivity extends AppCompatActivity
 		FragmentManager fm = getSupportFragmentManager();
 		Fragment fragment;
 
-		switch (item.getItemId())
+        DeviceUtils.dismissKeyboard(this);
+
+        switch (item.getItemId())
 		{
             case android.R.id.home:
             	Fragment f = FragmentNavigator.getDefaultFragment();
@@ -150,6 +154,12 @@ public class MainActivity extends AppCompatActivity
 				FragmentNavigator.clean();
                 FragmentNavigator.add(fragment);
 				return true;
+
+            case R.id.action_search:
+                fragment = new SearchFragment();
+                FragmentNavigator.clean();
+                FragmentNavigator.add(fragment);
+                return true;
 
             /*
 			case R.id.action_workshops:

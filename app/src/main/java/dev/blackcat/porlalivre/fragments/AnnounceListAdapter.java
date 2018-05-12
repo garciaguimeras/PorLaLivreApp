@@ -30,6 +30,11 @@ public class AnnounceListAdapter extends BaseAdapter
 		this.filteredAnnounces = filteredAnnounces;
 	}
 
+	public void setFilteredAnnounces(List<Announce> filteredAnnounces)
+	{
+		this.filteredAnnounces = filteredAnnounces;
+	}
+
 	@Override
 	public int getCount() 
 	{

@@ -14,14 +14,18 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dev.blackcat.porlalivre.R;
 import dev.blackcat.porlalivre.data.FavoritesFilter;
+import dev.blackcat.porlalivre.data.live.LiveAsyncTask;
 import dev.blackcat.porlalivre.utils.DeviceUtils;
 import dev.blackcat.porlalivre.utils.FragmentNavigator;
 import dev.blackcat.porlalivre.data.Announce;
@@ -29,14 +33,18 @@ import dev.blackcat.porlalivre.data.Announce;
 public class FavoritesListFragment extends Fragment implements OnItemClickListener
 {
 
-	List<Announce> filteredAnnounces;
+	List<Announce> filteredAnnounces = new ArrayList<>();
 	private Long categoryId;
 
-	RelativeLayout noAnnouncesLayout;
-	ListView listView;
+	RelativeLayout emptyFavoritesLayout;
+	ImageView emptyFavoritesImageView;
+	TextView emptyFavoritesTextView;
 
 	LinearLayout filterLayout;
 	EditText filterText;
+
+	ListView listView;
+	FavoritesListAdapter adapter;
 
 	public FavoritesListFragment()
 	{
@@ -80,8 +88,14 @@ public class FavoritesListFragment extends Fragment implements OnItemClickListen
 	{
 		View view = inflater.inflate(R.layout.fragment_favorites_list, container, false);
 
-		noAnnouncesLayout = view.findViewById(R.id.noFavoritesLayout);
+		emptyFavoritesLayout = view.findViewById(R.id.emptyFavoritesLayout);
+		emptyFavoritesImageView = view.findViewById(R.id.emptyFavoritesImageView);
+		emptyFavoritesTextView = view.findViewById(R.id.emptyFavoritesTextView);
+
 		listView = view.findViewById(R.id.favoritesListView);
+		adapter = new FavoritesListAdapter(getActivity(), filteredAnnounces);
+		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(this);
 
 		filterLayout = view.findViewById(R.id.filterLayout);
 		filterText = view.findViewById(R.id.filterText);
@@ -152,19 +166,48 @@ public class FavoritesListFragment extends Fragment implements OnItemClickListen
 
 	private void filterFavorites()
 	{
-		filteredAnnounces = Announce.filterByFavorites(getContext());
-		if (filteredAnnounces.size() == 0)
-		{
-			listView.setVisibility(View.GONE);
-			noAnnouncesLayout.setVisibility(View.VISIBLE);
-		}
-		else
-		{
-			listView.setVisibility(View.VISIBLE);
-			noAnnouncesLayout.setVisibility(View.GONE);
-			listView.setAdapter(new FavoritesListAdapter(getActivity(), filteredAnnounces));
-			listView.setOnItemClickListener(this);
-		}
+		LiveAsyncTask.start(new LiveAsyncTask.LiveService<Announce>() {
+
+			@Override
+			public void beforeStart()
+			{
+				if (filteredAnnounces.size() == 0)
+				{
+					emptyFavoritesImageView.setImageResource(R.drawable.wait_icon);
+					emptyFavoritesTextView.setText(R.string.text_searching);
+					listView.setVisibility(View.GONE);
+					emptyFavoritesLayout.setVisibility(View.VISIBLE);
+				}
+			}
+
+			@Override
+			public void afterFinish(List<Announce> list)
+			{
+				filteredAnnounces = list;
+				if (filteredAnnounces.size() == 0)
+				{
+					emptyFavoritesImageView.setImageResource(R.drawable.warning_icon);
+					emptyFavoritesTextView.setText(R.string.text_no_favorites_found);
+					listView.setVisibility(View.GONE);
+					emptyFavoritesLayout.setVisibility(View.VISIBLE);
+				}
+				else
+				{
+					listView.setVisibility(View.VISIBLE);
+					emptyFavoritesLayout.setVisibility(View.GONE);
+
+					adapter.setFilteredAnnounces(list);
+					adapter.notifyDataSetChanged();
+				}
+			}
+
+			@Override
+			public List<Announce> populateData()
+			{
+				return Announce.filterByFavorites(getContext());
+			}
+		});
+
 	}
 
 	private void showFilter(FavoritesFilter favoritesFilter)

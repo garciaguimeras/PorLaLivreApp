@@ -30,13 +30,13 @@
         </ListView>
 
         <RelativeLayout
-            android:id="@+id/noFavoritesLayout"
+            android:id="@+id/emptyFavoritesLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/noFavoritesImageView"
+                android:id="@+id/emptyFavoritesImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -44,11 +44,11 @@
                 android:src="@drawable/warning_icon" />
 
             <TextView
-                android:id="@+id/noFavoritesTextView"
+                android:id="@+id/emptyFavoritesTextView"
                 style="@style/WarningFont"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/noFavoritesImageView"
+                android:layout_below="@+id/emptyFavoritesImageView"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
