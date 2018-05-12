@@ -38,7 +38,7 @@ public class LiveAsyncTask<T> extends AsyncTask<Void, Void, List<T>>
     }
 
     @Override
-    protected void onPostExecute(List<T> list)
+    protected void onPostExecute(final List<T> list)
     {
         if (liveService != null)
             liveService.afterFinish(list);

@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,9 @@ public class SearchListFragment extends Fragment implements OnItemClickListener
 	List<Announce> filteredAnnounces = new ArrayList<>();
 	FavoritesListAdapter adapter;
 
-	RelativeLayout noResultLayout;
+	RelativeLayout emptySearchLayout;
+	ImageView emptySearchImageView;
+	TextView emptySearchTextView;
 	ListView listView;
 
 	public SearchListFragment()
@@ -69,9 +73,13 @@ public class SearchListFragment extends Fragment implements OnItemClickListener
 	{
 		View view = inflater.inflate(R.layout.fragment_search_list, container, false);
 
-		noResultLayout = view.findViewById(R.id.noResultLayout);
+		emptySearchLayout = view.findViewById(R.id.emptySearchLayout);
+		emptySearchImageView = view.findViewById(R.id.emptySearchImageView);
+		emptySearchTextView = view.findViewById(R.id.emptySearchTextView);
+
 		listView = view.findViewById(R.id.searchListView);
-		listView.setAdapter(new FavoritesListAdapter(getActivity(), filteredAnnounces));
+		adapter = new FavoritesListAdapter(getActivity(), filteredAnnounces);
+		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(this);
 
 		filterAllAnnounces();
@@ -100,7 +108,13 @@ public class SearchListFragment extends Fragment implements OnItemClickListener
 			@Override
 			public void beforeStart()
 			{
-
+                if (filteredAnnounces.size() == 0)
+                {
+                    emptySearchImageView.setImageResource(R.drawable.wait_icon);
+                    emptySearchTextView.setText(R.string.text_searching);
+                    listView.setVisibility(View.GONE);
+                    emptySearchLayout.setVisibility(View.VISIBLE);
+                }
 			}
 
 			@Override
@@ -109,13 +123,16 @@ public class SearchListFragment extends Fragment implements OnItemClickListener
 				filteredAnnounces = list;
 				if (filteredAnnounces.size() == 0)
 				{
+					emptySearchImageView.setImageResource(R.drawable.warning_icon);
+					emptySearchTextView.setText(R.string.text_no_announces_found);
 					listView.setVisibility(View.GONE);
-					noResultLayout.setVisibility(View.VISIBLE);
+					emptySearchLayout.setVisibility(View.VISIBLE);
 				}
 				else
 				{
 					listView.setVisibility(View.VISIBLE);
-					noResultLayout.setVisibility(View.GONE);
+					emptySearchLayout.setVisibility(View.GONE);
+
 					adapter.setFilteredAnnounces(filteredAnnounces);
 					adapter.notifyDataSetChanged();
 				}

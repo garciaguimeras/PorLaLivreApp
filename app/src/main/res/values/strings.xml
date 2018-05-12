@@ -98,6 +98,7 @@
     <string name="text_internet_update_help">Asegúrese de estar conectado a internet antes de acceder a esta opción.</string>
     <string name="text_sdcard_update_help">Descargue las actualizaciones desde la página web www.porlalivre.com y cópielas en la tarjeta SD.</string>
     <string name="text_cleanup_help">Se eliminarán todos los anuncios antiguos, excepto aquellos que estén marcados como favoritos.</string>
+    <string name="text_searching">Buscando resultados...</string>
 
     <string name="filter_title_text_hint">Búsqueda...</string>
     <string name="filter_title_min_price">Desde $</string>
@@ -130,6 +131,7 @@
     <string name="button_search">Buscar</string>
 
     <string name="search_text_hint">¿Qué estás buscando?</string>
+    <string name="search_error_hint">Por favor, escribe qué estás buscando</string>
 
     <array name="cleanup_options">
         <item>1 semana</item>
