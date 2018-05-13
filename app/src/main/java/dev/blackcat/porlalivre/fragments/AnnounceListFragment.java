@@ -43,7 +43,7 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 
 	List<Announce> filteredAnnounces = new ArrayList<>();
 	private Long categoryId;
-    ArrayList<Site> siteList;
+    List<Site> siteList;
 
     RelativeLayout emptyAnnouncesLayout;
     TextView emptyAnnouncesTextView;
@@ -64,7 +64,7 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 
 	public AnnounceListFragment()
 	{
-		this.categoryId = new Long(-1);
+		categoryId = new Long(-1);
 	}
 	
     public static AnnounceListFragment newInstance(Long categoryId) 
@@ -126,6 +126,10 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(this);
 
+		siteList = Site.getSites(getContext());
+		String text = getActivity().getString(R.string.filter_all_states);
+		siteList.add(0, new Site(0, text));
+
         filterButton = view.findViewById(R.id.noAnnouncesFilterButton);
         filterButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -170,11 +174,6 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 				showFilter(new AnnounceFilter(categoryId));
 			}
 		});
-
-        siteList = new ArrayList<Site>();
-        String text = getActivity().getString(R.string.filter_all_states);
-        siteList.addAll(Site.getSites(getContext()));
-        siteList.add(0, new Site(0, text));
 
 		AnnounceFilter filter = AnnounceFilter.get(getContext(), categoryId);
         if (!filter.isEmpty())

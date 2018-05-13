@@ -30,6 +30,8 @@ public class SearchFragment extends Fragment
 
     public static final long SEARCH_FILTER_ID = -100;
 
+    List<Site> siteList;
+
     EditText searchText;
     Spinner searchState;
     EditText searchFromPrice;
@@ -71,11 +73,9 @@ public class SearchFragment extends Fragment
         searchNewerFirst = view.findViewById(R.id.searchNewerFirst);
         searchNewerFirst.setChecked(filter.newerFirst);
 
-        final List<Site> siteList = Site.getSites(getContext());
+        siteList = Site.getSites(getContext());
         String text = getActivity().getString(R.string.filter_all_states);
-        siteList.addAll(siteList);
         siteList.add(0, new Site(0, text));
-
         searchState = view.findViewById(R.id.searchState);
         searchState.setAdapter(new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, siteList));
 
