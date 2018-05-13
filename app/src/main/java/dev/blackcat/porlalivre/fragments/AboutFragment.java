@@ -27,6 +27,12 @@ public class AboutFragment extends Fragment
 
         String text = "";
         TextView textView;
+        final AppInfo info = DeviceUtils.getAppInfo(getActivity());
+
+        textView = view.findViewById(R.id.aboutAppVersionTextView);
+        text = getString(R.string.about_app_version);
+        text = text.replace("${version}", info.packageVersion);
+        textView.setText(text);
 
         text = getString(R.string.about_app_description);
         textView = view.findViewById(R.id.aboutAppDescriptionTextView);
@@ -41,7 +47,6 @@ public class AboutFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                AppInfo info = DeviceUtils.getAppInfo(getActivity());
                 String address = getString(R.string.dev_mail_address);
                 String subject = getString(R.string.dev_mail_subject);
                 String text = getString(R.string.dev_mail_text);

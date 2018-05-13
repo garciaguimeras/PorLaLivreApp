@@ -25,7 +25,7 @@
         android:text="@string/app_name"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/aboutAppVersionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
-        android:layout_toRightOf="@+id/textView2"
+        android:layout_toRightOf="@+id/aboutAppVersionTextView"
         android:layout_marginLeft="5dp"
         android:textColor="#000000"
         android:textSize="10dp"

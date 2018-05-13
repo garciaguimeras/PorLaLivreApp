@@ -37,7 +37,7 @@
 					android:textStyle="bold" />
 
 				<TextView
-					android:id="@+id/textView2"
+					android:id="@+id/aboutAppVersionTextView"
 					style="@style/AboutTitleFont"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
 					android:id="@+id/aboutAppDescriptionTextView"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_below="@+id/textView2"
+					android:layout_below="@+id/aboutAppVersionTextView"
 					android:layout_centerHorizontal="true"
 					android:textAlignment="center"
 					android:text="@string/about_app_description" />
