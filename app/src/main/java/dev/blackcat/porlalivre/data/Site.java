@@ -11,8 +11,6 @@ import dev.blackcat.porlalivre.data.readers.AssetsSiteReader;
 public class Site extends JSONData
 {
 
-	private static List<Site> sites;
-
 	@JsonProperty("id") public long id;
 	@JsonProperty("name") public String name;
 	@JsonProperty("domain") public String domain;
@@ -48,9 +46,7 @@ public class Site extends JSONData
 
 	public static List<Site> getSites(Context context)
 	{
-		if (sites == null)
-			sites = new AssetsSiteReader().readSites(context);
-		return sites;
+		return new AssetsSiteReader().readSites(context);
 	}
 	
 }

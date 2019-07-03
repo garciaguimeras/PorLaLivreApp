@@ -40,6 +40,7 @@ public class FavoritesListFragment extends Fragment implements OnItemClickListen
 	ImageView emptyFavoritesImageView;
 	TextView emptyFavoritesTextView;
 
+	MenuItem filterMenuItem;
 	LinearLayout filterLayout;
 	EditText filterText;
 
@@ -120,11 +121,32 @@ public class FavoritesListFragment extends Fragment implements OnItemClickListen
 
 		filterFavorites();
 
-		FavoritesFilter filter = FavoritesFilter.get(getContext());
-		if (!filter.isEmpty())
-			showFilter(filter);
-		
 		return view;
+	}
+
+	private MenuItem getFilterMenuItem(Menu menu)
+	{
+		for (int i = 0; i < menu.size(); i++)
+		{
+			MenuItem item = menu.getItem(i);
+			if (item.getItemId() == R.id.action_filter)
+			{
+				return item;
+			}
+		}
+		return null;
+	}
+
+	private void setFilterMenuItemIcon()
+	{
+		if (filterMenuItem != null)
+		{
+			FavoritesFilter filter = FavoritesFilter.get(getContext());
+			if (!filter.isEmpty())
+				filterMenuItem.setIcon(R.drawable.filter_plus_icon);
+			else
+				filterMenuItem.setIcon(R.drawable.filter_icon);
+		}
 	}
 
 	@Override
@@ -132,6 +154,9 @@ public class FavoritesListFragment extends Fragment implements OnItemClickListen
 	{
 		super.onCreateOptionsMenu(menu, inflater);
 		inflater.inflate(R.menu.announce_list, menu);
+
+		filterMenuItem = getFilterMenuItem(menu);
+		setFilterMenuItemIcon();
 	}
 
 	@Override
@@ -224,6 +249,7 @@ public class FavoritesListFragment extends Fragment implements OnItemClickListen
 
 			FavoritesFilter.save(getContext(), new FavoritesFilter(text));
 			filterFavorites();
+			setFilterMenuItemIcon();
 		}
 		DeviceUtils.dismissKeyboard(getActivity());
 		filterLayout.setVisibility(View.GONE);

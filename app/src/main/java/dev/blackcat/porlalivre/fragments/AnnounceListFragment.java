@@ -52,6 +52,7 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
     Button filterButton;
     Button updateButton;
 
+	MenuItem filterMenuItem;
 	LinearLayout filterLayout;
 	EditText filterText;
 	Spinner stateSpinner;
@@ -175,11 +176,32 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 			}
 		});
 
-		AnnounceFilter filter = AnnounceFilter.get(getContext(), categoryId);
-        if (!filter.isEmpty())
-			showFilter(filter);
-
 		return view;
+	}
+
+	private MenuItem getFilterMenuItem(Menu menu)
+	{
+		for (int i = 0; i < menu.size(); i++)
+		{
+			MenuItem item = menu.getItem(i);
+			if (item.getItemId() == R.id.action_filter)
+			{
+				return item;
+			}
+		}
+		return null;
+	}
+
+	private void setFilterMenuItemIcon()
+	{
+		if (filterMenuItem != null)
+		{
+			AnnounceFilter filter = AnnounceFilter.get(getContext(), categoryId);
+			if (!filter.isEmpty())
+				filterMenuItem.setIcon(R.drawable.filter_plus_icon);
+			else
+				filterMenuItem.setIcon(R.drawable.filter_icon);
+		}
 	}
 
 	@Override
@@ -187,6 +209,9 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 	{
 		super.onCreateOptionsMenu(menu, inflater);
 		inflater.inflate(R.menu.announce_list, menu);
+
+		filterMenuItem = getFilterMenuItem(menu);
+		setFilterMenuItemIcon();
 	}
 
 	@Override
@@ -302,6 +327,7 @@ public class AnnounceListFragment extends Fragment implements OnItemClickListene
 
             AnnounceFilter.save(getContext(), new AnnounceFilter(categoryId, min, max, siteId, newerFirst, cheaperFirst, text));
             filterAnnounces();
+            setFilterMenuItemIcon();
         }
 		DeviceUtils.dismissKeyboard(getActivity());
         filterLayout.setVisibility(View.GONE);
